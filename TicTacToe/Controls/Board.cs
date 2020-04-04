@@ -20,16 +20,16 @@ namespace TicTacToe.Controls
         public Board()
         {
             InitializeComponent();
+            Reset();
+        }
+
+        public void Reset()
+        {
+            Game = new Model.TicTacToe();
             Set();
         }
 
         public void Set()
-        {
-            Game = new Model.TicTacToe();
-            SetBoard();
-        }
-
-        private void SetBoard()
         {
             if(Game!=null)
             {
@@ -80,7 +80,7 @@ namespace TicTacToe.Controls
             {
                 Game = new Model.TicTacToe();
                 Game.Set(g.Substring(0, 9), g[9]);
-                SetBoard();
+                Set();
                 if(Game.HaveWin())
                     OnGetWinner?.Invoke(this, new EventArgs());
             }

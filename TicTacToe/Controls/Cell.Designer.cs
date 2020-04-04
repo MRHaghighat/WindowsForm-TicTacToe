@@ -37,7 +37,7 @@
             this.btnCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnCell.Location = new System.Drawing.Point(0, 0);
             this.btnCell.Name = "btnCell";
-            this.btnCell.Size = new System.Drawing.Size(122, 106);
+            this.btnCell.Size = new System.Drawing.Size(100, 100);
             this.btnCell.TabIndex = 0;
             this.btnCell.UseVisualStyleBackColor = true;
             this.btnCell.Click += new System.EventHandler(this.btnCell_Click);
@@ -48,7 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCell);
             this.Name = "Cell";
-            this.Size = new System.Drawing.Size(122, 106);
+            this.Size = new System.Drawing.Size(100, 100);
             this.ResumeLayout(false);
 
         }

@@ -44,79 +44,79 @@
             this.cell1.CellIndex = 0;
             this.cell1.Location = new System.Drawing.Point(3, 3);
             this.cell1.Name = "cell1";
-            this.cell1.Size = new System.Drawing.Size(122, 106);
+            this.cell1.Size = new System.Drawing.Size(75, 75);
             this.cell1.TabIndex = 0;
             this.cell1.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell2
             // 
             this.cell2.CellIndex = 1;
-            this.cell2.Location = new System.Drawing.Point(131, 3);
+            this.cell2.Location = new System.Drawing.Point(84, 3);
             this.cell2.Name = "cell2";
-            this.cell2.Size = new System.Drawing.Size(122, 106);
+            this.cell2.Size = new System.Drawing.Size(75, 75);
             this.cell2.TabIndex = 1;
             this.cell2.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell3
             // 
             this.cell3.CellIndex = 2;
-            this.cell3.Location = new System.Drawing.Point(259, 3);
+            this.cell3.Location = new System.Drawing.Point(165, 3);
             this.cell3.Name = "cell3";
-            this.cell3.Size = new System.Drawing.Size(122, 106);
+            this.cell3.Size = new System.Drawing.Size(75, 75);
             this.cell3.TabIndex = 2;
             this.cell3.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell4
             // 
             this.cell4.CellIndex = 3;
-            this.cell4.Location = new System.Drawing.Point(3, 115);
+            this.cell4.Location = new System.Drawing.Point(3, 84);
             this.cell4.Name = "cell4";
-            this.cell4.Size = new System.Drawing.Size(122, 106);
+            this.cell4.Size = new System.Drawing.Size(75, 75);
             this.cell4.TabIndex = 0;
             this.cell4.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell5
             // 
             this.cell5.CellIndex = 4;
-            this.cell5.Location = new System.Drawing.Point(131, 115);
+            this.cell5.Location = new System.Drawing.Point(84, 84);
             this.cell5.Name = "cell5";
-            this.cell5.Size = new System.Drawing.Size(122, 106);
+            this.cell5.Size = new System.Drawing.Size(75, 75);
             this.cell5.TabIndex = 1;
             this.cell5.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell6
             // 
             this.cell6.CellIndex = 5;
-            this.cell6.Location = new System.Drawing.Point(259, 115);
+            this.cell6.Location = new System.Drawing.Point(165, 84);
             this.cell6.Name = "cell6";
-            this.cell6.Size = new System.Drawing.Size(122, 106);
+            this.cell6.Size = new System.Drawing.Size(75, 75);
             this.cell6.TabIndex = 2;
             this.cell6.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell7
             // 
             this.cell7.CellIndex = 6;
-            this.cell7.Location = new System.Drawing.Point(3, 227);
+            this.cell7.Location = new System.Drawing.Point(3, 165);
             this.cell7.Name = "cell7";
-            this.cell7.Size = new System.Drawing.Size(122, 106);
+            this.cell7.Size = new System.Drawing.Size(75, 75);
             this.cell7.TabIndex = 0;
             this.cell7.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell8
             // 
             this.cell8.CellIndex = 7;
-            this.cell8.Location = new System.Drawing.Point(131, 227);
+            this.cell8.Location = new System.Drawing.Point(84, 165);
             this.cell8.Name = "cell8";
-            this.cell8.Size = new System.Drawing.Size(122, 106);
+            this.cell8.Size = new System.Drawing.Size(75, 75);
             this.cell8.TabIndex = 1;
             this.cell8.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
             // cell9
             // 
             this.cell9.CellIndex = 8;
-            this.cell9.Location = new System.Drawing.Point(259, 227);
+            this.cell9.Location = new System.Drawing.Point(165, 165);
             this.cell9.Name = "cell9";
-            this.cell9.Size = new System.Drawing.Size(122, 106);
+            this.cell9.Size = new System.Drawing.Size(75, 75);
             this.cell9.TabIndex = 2;
             this.cell9.OnSelectCell += new System.EventHandler(this.cell_OnSelectCell);
             // 
@@ -134,7 +134,7 @@
             this.Controls.Add(this.cell4);
             this.Controls.Add(this.cell1);
             this.Name = "Board";
-            this.Size = new System.Drawing.Size(383, 340);
+            this.Size = new System.Drawing.Size(243, 243);
             this.ResumeLayout(false);
 
         }

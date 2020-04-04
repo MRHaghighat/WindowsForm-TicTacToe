@@ -24,7 +24,7 @@ namespace TicTacToe.Forms
 
         private void tsmiStart_Click(object sender, EventArgs e)
         {
-            board1.Set();
+            board1.Reset();
         }
 
         private void board1_OnGetWinner(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace TicTacToe.Forms
                 ,""
                 , MessageBoxButtons.YesNo)== DialogResult.Yes)
             {
-                board1.Set();
+                board1.Reset();
             }
         }
 

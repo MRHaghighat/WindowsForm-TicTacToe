@@ -10,7 +10,7 @@ namespace TicTacToe.Forms
     {
         public Master()
         {
-            RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            //RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             Font = new System.Drawing.Font("tahoma", 9);
         }
     }
