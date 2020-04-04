@@ -12,17 +12,9 @@ namespace TicTacToe.Forms
 {
     public partial class Start : Forms.Master
     {
-        Model.TicTacToe Game;
         public Start()
         {
             InitializeComponent();
-            Set();
-        }
-
-        public void Set()
-        {
-            Game = new Model.TicTacToe();
-            board1.Set(Game);
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
@@ -32,16 +24,30 @@ namespace TicTacToe.Forms
 
         private void tsmiStart_Click(object sender, EventArgs e)
         {
-            Set();
+            board1.Set();
         }
 
         private void board1_OnGetWinner(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Winner is "+ Game.GetWinner()+"\nDo you want to start again?"
+            if(MessageBox.Show("Winner is "+ board1.Game.GetWinner()+"\nDo you want to start again?"
                 ,""
                 , MessageBoxButtons.YesNo)== DialogResult.Yes)
             {
-                Set();
+                board1.Set();
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                board1.Save(saveFileDialog.FileName);
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                board1.LoadGame(openFileDialog.FileName);
             }
         }
     }

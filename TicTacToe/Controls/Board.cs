@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TicTacToe.Controls
 {
@@ -19,15 +20,13 @@ namespace TicTacToe.Controls
         public Board()
         {
             InitializeComponent();
+            Set();
         }
 
-        public void Set(Model.TicTacToe game)
+        public void Set()
         {
-            if (game != null)
-            {
-                Game = game;
-                SetBoard();
-            }
+            Game = new Model.TicTacToe();
+            SetBoard();
         }
 
         private void SetBoard()
@@ -59,6 +58,34 @@ namespace TicTacToe.Controls
                 OnPlayed?.Invoke(this, new EventArgs());
                 OnGetWinner?.Invoke(this, new EventArgs());
             }
+        }
+
+        public void Save(string path)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (char b in Game.Board)
+                stringBuilder.Append(b);
+
+            stringBuilder.Append(Game.CurrentBead);
+
+            File.WriteAllText(path, stringBuilder.ToString());
+        }
+
+        public Model.TicTacToe LoadGame(string path)
+        {
+            string g = File.ReadAllText(path);
+
+            if(g.Length>9 && g.Length<11)
+            {
+                Game = new Model.TicTacToe();
+                Game.Set(g.Substring(0, 9), g[9]);
+                SetBoard();
+                if(Game.HaveWin())
+                    OnGetWinner?.Invoke(this, new EventArgs());
+            }
+
+            return Game;
         }
     }
 }

@@ -8,8 +8,8 @@ namespace TicTacToe.Model
 {
     public class TicTacToe
     {
-        public string[] Board;
-        public string CurrentBead;
+        public char[] Board;
+        public char CurrentBead;
         bool mustStop;
 
         public TicTacToe()
@@ -19,8 +19,15 @@ namespace TicTacToe.Model
 
         public void Set()
         {
-            Board = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-            CurrentBead = "X";
+            Board = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            CurrentBead = 'X';
+            mustStop = false;
+        }
+
+        public void Set(string b, char cb)
+        {
+            Board = b.ToArray();
+            CurrentBead = cb;
             mustStop = false;
         }
 
@@ -38,7 +45,7 @@ namespace TicTacToe.Model
             return mustStop;
         }
 
-        public string Play(int CellIndex)
+        public char Play(int CellIndex)
         {
             if (!mustStop && CellIndex > -1 && CellIndex < 9)
             {
@@ -49,29 +56,29 @@ namespace TicTacToe.Model
             return Board[CellIndex];
         }
 
-        public string GetWinner()
+        public char GetWinner()
         {
             if (HaveWin())
                 return GetPlayedBead();
             else
-                return null;
+                return '\0' ;
         }
 
-        public string GetTurn()
+        public char GetTurn()
         {
-            if (CurrentBead == "X")
-                CurrentBead = "O";
+            if (CurrentBead == 'X')
+                CurrentBead = 'O';
             else
-                CurrentBead = "X";
+                CurrentBead = 'X';
             return CurrentBead;
         }
 
-        public string GetPlayedBead()
+        public char GetPlayedBead()
         {
-            if (CurrentBead == "X")
-                return "O";
+            if (CurrentBead == 'X')
+                return 'O';
             else
-                return "X";
+                return 'X';
         }
     }
 }

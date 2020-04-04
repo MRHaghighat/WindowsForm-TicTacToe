@@ -41,7 +41,6 @@
             // 
             // cell1
             // 
-            this.cell1.Bead = "";
             this.cell1.CellIndex = 0;
             this.cell1.Location = new System.Drawing.Point(3, 3);
             this.cell1.Name = "cell1";
@@ -51,7 +50,6 @@
             // 
             // cell2
             // 
-            this.cell2.Bead = "";
             this.cell2.CellIndex = 1;
             this.cell2.Location = new System.Drawing.Point(131, 3);
             this.cell2.Name = "cell2";
@@ -61,7 +59,6 @@
             // 
             // cell3
             // 
-            this.cell3.Bead = "";
             this.cell3.CellIndex = 2;
             this.cell3.Location = new System.Drawing.Point(259, 3);
             this.cell3.Name = "cell3";
@@ -71,7 +68,6 @@
             // 
             // cell4
             // 
-            this.cell4.Bead = "";
             this.cell4.CellIndex = 3;
             this.cell4.Location = new System.Drawing.Point(3, 115);
             this.cell4.Name = "cell4";
@@ -81,7 +77,6 @@
             // 
             // cell5
             // 
-            this.cell5.Bead = "";
             this.cell5.CellIndex = 4;
             this.cell5.Location = new System.Drawing.Point(131, 115);
             this.cell5.Name = "cell5";
@@ -91,7 +86,6 @@
             // 
             // cell6
             // 
-            this.cell6.Bead = "";
             this.cell6.CellIndex = 5;
             this.cell6.Location = new System.Drawing.Point(259, 115);
             this.cell6.Name = "cell6";
@@ -101,7 +95,6 @@
             // 
             // cell7
             // 
-            this.cell7.Bead = "";
             this.cell7.CellIndex = 6;
             this.cell7.Location = new System.Drawing.Point(3, 227);
             this.cell7.Name = "cell7";
@@ -111,7 +104,6 @@
             // 
             // cell8
             // 
-            this.cell8.Bead = "";
             this.cell8.CellIndex = 7;
             this.cell8.Location = new System.Drawing.Point(131, 227);
             this.cell8.Name = "cell8";
@@ -121,7 +113,6 @@
             // 
             // cell9
             // 
-            this.cell9.Bead = "";
             this.cell9.CellIndex = 8;
             this.cell9.Location = new System.Drawing.Point(259, 227);
             this.cell9.Name = "cell9";
