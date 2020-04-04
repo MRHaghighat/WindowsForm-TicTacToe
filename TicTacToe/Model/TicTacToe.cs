@@ -8,39 +8,53 @@ namespace TicTacToe.Model
 {
     public class TicTacToe
     {
-        public char[] Board;
-        public char CurrentBead;
         bool mustStop;
+        char CurrentBead;
+        char[] board;
+
+        public char[] Board { get=> board; }
+        public bool IsContinuous { get => HaveWinner(); }
+        public char Winner
+        {
+            get
+            {
+                if (IsContinuous)
+                    return GetWinner();
+                return '\0';
+            }
+        }
+        public char TurnTaken { get => CurrentBead; }
+        public char RecentPlayed { get => GetPlayedBead(); }
 
         public TicTacToe()
         {
-            Set();
+            Reset();
         }
 
-        public void Set()
+        public void Reset()
         {
-            Board = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            board = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             CurrentBead = 'X';
             mustStop = false;
         }
 
         public void Set(string b, char cb)
         {
-            Board = b.ToArray();
+            board = b.ToArray();
             CurrentBead = cb;
             mustStop = false;
         }
 
-        public bool HaveWin()
+        private bool HaveWinner()
         {
-            mustStop = Board[0] == Board[1] && Board[1] == Board[2]
-                || Board[3] == Board[4] && Board[4] == Board[5]
-                || Board[6] == Board[7] && Board[7] == Board[8]
-                || Board[0] == Board[3] && Board[3] == Board[6]
-                || Board[1] == Board[4] && Board[4] == Board[7]
-                || Board[2] == Board[5] && Board[5] == Board[8]
-                || Board[0] == Board[4] && Board[4] == Board[8]
-                || Board[2] == Board[4] && Board[4] == Board[6];
+            mustStop = board[0] == board[1] && board[1] == board[2]
+                || board[3] == board[4] && board[4] == board[5]
+                || board[6] == board[7] && board[7] == board[8]
+                || board[0] == board[3] && board[3] == board[6]
+                || board[1] == board[4] && board[4] == board[7]
+                || board[2] == board[5] && board[5] == board[8]
+                || board[0] == board[4] && board[4] == board[8]
+                || board[2] == board[4] && board[4] == board[6];
 
             return mustStop;
         }
@@ -49,22 +63,22 @@ namespace TicTacToe.Model
         {
             if (!mustStop && CellIndex > -1 && CellIndex < 9)
             {
-                Board[CellIndex] = CurrentBead;
+                board[CellIndex] = CurrentBead;
                 GetTurn();
                 return GetPlayedBead();
             }
-            return Board[CellIndex];
+            return board[CellIndex];
         }
 
-        public char GetWinner()
+        private char GetWinner()
         {
-            if (HaveWin())
+            if (HaveWinner())
                 return GetPlayedBead();
             else
                 return '\0' ;
         }
 
-        public char GetTurn()
+        private char GetTurn()
         {
             if (CurrentBead == 'X')
                 CurrentBead = 'O';
@@ -73,7 +87,7 @@ namespace TicTacToe.Model
             return CurrentBead;
         }
 
-        public char GetPlayedBead()
+        private char GetPlayedBead()
         {
             if (CurrentBead == 'X')
                 return 'O';

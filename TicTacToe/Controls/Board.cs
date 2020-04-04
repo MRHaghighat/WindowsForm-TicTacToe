@@ -14,8 +14,12 @@ namespace TicTacToe.Controls
     public partial class Board : UserControl
     {
         public event EventHandler OnPlayed, OnGetWinner;
+        public char Winner
+        {
+            get => Game.Winner;
+        }
 
-        public Model.TicTacToe Game;
+        private Model.TicTacToe Game;
 
         public Board()
         {
@@ -49,7 +53,7 @@ namespace TicTacToe.Controls
         {
             Cell cell = (Cell)sender;
             cell.Bead = Game.Play(cell.CellIndex);
-            if (!Game.HaveWin())
+            if (!Game.IsContinuous)
             {               
                 OnPlayed?.Invoke(this, new EventArgs());
             }
@@ -67,12 +71,12 @@ namespace TicTacToe.Controls
             foreach (char b in Game.Board)
                 stringBuilder.Append(b);
 
-            stringBuilder.Append(Game.CurrentBead);
+            stringBuilder.Append(Game.TurnTaken);
 
             File.WriteAllText(path, stringBuilder.ToString());
         }
 
-        public Model.TicTacToe LoadGame(string path)
+        public void LoadGame(string path)
         {
             string g = File.ReadAllText(path);
 
@@ -81,11 +85,9 @@ namespace TicTacToe.Controls
                 Game = new Model.TicTacToe();
                 Game.Set(g.Substring(0, 9), g[9]);
                 Set();
-                if(Game.HaveWin())
+                if(Game.IsContinuous)
                     OnGetWinner?.Invoke(this, new EventArgs());
             }
-
-            return Game;
         }
     }
 }

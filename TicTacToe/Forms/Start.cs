@@ -29,7 +29,7 @@ namespace TicTacToe.Forms
 
         private void board1_OnGetWinner(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Winner is "+ board1.Game.GetWinner()+"\nDo you want to start again?"
+            if(MessageBox.Show("Winner is "+ board1.Winner+"\nDo you want to start again?"
                 ,""
                 , MessageBoxButtons.YesNo)== DialogResult.Yes)
             {
