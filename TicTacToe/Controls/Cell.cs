@@ -22,6 +22,11 @@ namespace TicTacToe.Controls
             }
             set
             {
+                if (value == "X")
+                    ForeColor = Color.Blue;
+                else if(value=="O")
+                    ForeColor = Color.Red;
+
                 btnCell.Text = value;
                 OnChangedBead?.Invoke(this, new EventArgs());
             }
