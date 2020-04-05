@@ -8,23 +8,25 @@ namespace TicTacToe.Model
 {
     public class TicTacToe
     {
+        Bead X = new Bead("X", 'X', System.Drawing.Color.Blue);
+        Bead O = new Bead("O", 'O', System.Drawing.Color.Red);
         bool mustStop;
-        char CurrentBead;
-        char[] board;
+        Bead CurrentBead;
+        Bead[] board;
 
-        public char[] Board { get=> board; }
+        public Bead[] Board { get=> board; }
         public bool IsContinuous { get => HaveWinner(); }
-        public char Winner
+        public Bead Winner
         {
             get
             {
                 if (IsContinuous)
                     return GetWinner();
-                return '\0';
+                return null;
             }
         }
-        public char TurnTaken { get => CurrentBead; }
-        public char RecentPlayed { get => GetPlayedBead(); }
+        public Bead TurnTaken { get => CurrentBead; }
+        public Bead RecentPlayed { get => GetPlayedBead(); }
 
         public TicTacToe()
         {
@@ -33,15 +35,34 @@ namespace TicTacToe.Model
 
         public void Reset()
         {
-            board = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            CurrentBead = 'X';
+            board = new Bead[9];
+            for(int i=0; i<9; i++)
+            {
+                board[i] = new Bead((i+1).ToString());
+            }
+            CurrentBead = X;
             mustStop = false;
         }
 
         public void Set(string b, char cb)
         {
-            board = b.ToArray();
-            CurrentBead = cb;
+            for (int i = 0; i < 9; i++)
+            {
+                switch (b[i])
+                {
+                    case 'X':
+                        board[i] = X;
+                        break;
+                    case 'O':
+                        board[i] = O;
+                        break;
+                    default:
+                        board[i] = new Bead(b[i].ToString());
+                        break;
+                }
+            }
+
+            CurrentBead = cb == 'X' ? X : O;
             mustStop = false;
         }
 
@@ -59,7 +80,7 @@ namespace TicTacToe.Model
             return mustStop;
         }
 
-        public char Play(int CellIndex)
+        public Bead Play(int CellIndex)
         {
             if (!mustStop && CellIndex > -1 && CellIndex < 9)
             {
@@ -70,29 +91,29 @@ namespace TicTacToe.Model
             return board[CellIndex];
         }
 
-        private char GetWinner()
+        private Bead GetWinner()
         {
             if (HaveWinner())
                 return GetPlayedBead();
             else
-                return '\0' ;
+                return null ;
         }
 
-        private char GetTurn()
+        private Bead GetTurn()
         {
-            if (CurrentBead == 'X')
-                CurrentBead = 'O';
+            if (CurrentBead == X)
+                CurrentBead = O;
             else
-                CurrentBead = 'X';
+                CurrentBead = X;
             return CurrentBead;
         }
 
-        private char GetPlayedBead()
+        private Bead GetPlayedBead()
         {
-            if (CurrentBead == 'X')
-                return 'O';
+            if (CurrentBead == X)
+                return O;
             else
-                return 'X';
+                return X;
         }
     }
 }

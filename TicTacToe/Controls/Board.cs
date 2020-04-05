@@ -14,7 +14,7 @@ namespace TicTacToe.Controls
     public partial class Board : UserControl
     {
         public event EventHandler OnPlayed, OnGetWinner;
-        public char Winner
+        public Model.Bead Winner
         {
             get => Game.Winner;
         }
@@ -68,10 +68,10 @@ namespace TicTacToe.Controls
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (char b in Game.Board)
-                stringBuilder.Append(b);
+            foreach (Model.Bead b in Game.Board)
+                stringBuilder.Append(b.Symbol);
 
-            stringBuilder.Append(Game.TurnTaken);
+            stringBuilder.Append(Game.TurnTaken.Symbol);
 
             File.WriteAllText(path, stringBuilder.ToString());
         }

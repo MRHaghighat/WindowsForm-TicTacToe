@@ -14,23 +14,23 @@ namespace TicTacToe.Controls
     {
         public event EventHandler OnChangedBead, OnSelectCell;
 
-        public char Bead
+        Model.Bead bead;
+        public Model.Bead Bead
         {
             get
             {
-                return btnCell.Text[0];
+                return bead;
             }
             set
             {
-                if (value == 'X')
-                    ForeColor = Color.Blue;
-                else if (value == 'O')
-                    ForeColor = Color.Red;
-                else
-                    ForeColor = Color.Black;
-
-                btnCell.Text = value.ToString();
-                OnChangedBead?.Invoke(this, new EventArgs());
+                if (value != null)
+                {
+                    bead = value;
+                    btnCell.Text = bead.Symbol.ToString();
+                    btnCell.ForeColor = bead.Color;
+                    OnChangedBead?.Invoke(this, new EventArgs());
+                }
+                
             }
         }
 
