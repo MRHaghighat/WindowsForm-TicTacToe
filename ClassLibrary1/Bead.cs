@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicTacToe.Model
+namespace Model
 {
     public class Bead
     {
         public string Name { get; set; }
         public char Symbol { get; set; }
-        public System.Drawing.Color Color { get; set; }
+        public Color Color { get; set; }
 
         public Bead(string name)
         {
@@ -20,12 +21,12 @@ namespace TicTacToe.Model
         {
             Set(name, symbol);
         }
-        public Bead(string name, char symbol, System.Drawing.Color color)
+        public Bead(string name, char symbol, Color color)
         {
             Set(name, symbol, color);
         }
 
-        public Bead Set(string name, char symbol, System.Drawing.Color color)
+        public Bead Set(string name, char symbol, Color color)
         {
             if (name != null)
             {
@@ -39,11 +40,11 @@ namespace TicTacToe.Model
         }
         public Bead Set(string name, char symbol)
         {
-            return Set(name, symbol, System.Drawing.Color.Black);
+            return Set(name, symbol, Color.Black);
         }
         public Bead Set(string name)
         {
-            return Set(name, name != null ? name.ToUpper()[0] : '\0', System.Drawing.Color.Black);
+            return Set(name, name != null ? name.ToUpper()[0] : '\0', Color.Black);
         }
     }
 }

@@ -57,6 +57,18 @@
     <Compile Include="Controls\Cell.Designer.cs">
       <DependentUpon>Cell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\InputPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InputPlayer.Designer.cs">
+      <DependentUpon>InputPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GetInitiales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GetInitiales.Designer.cs">
+      <DependentUpon>GetInitiales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,8 +78,6 @@
     <Compile Include="Forms\Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Bead.cs" />
-    <Compile Include="Model\TicTacToe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\Board.resx">
@@ -75,6 +85,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Cell.resx">
       <DependentUpon>Cell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InputPlayer.resx">
+      <DependentUpon>InputPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GetInitiales.resx">
+      <DependentUpon>GetInitiales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
@@ -101,8 +117,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Tests\" />
+    <ProjectReference Include="..\ClassLibrary1\Model.csproj">
+      <Project>{ae0455e9-1cd0-494b-bc86-f33de325d211}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

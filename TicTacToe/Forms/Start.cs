@@ -12,9 +12,14 @@ namespace TicTacToe.Forms
 {
     public partial class Start : Forms.Master
     {
+        GetInitiales gi;
+
         public Start()
         {
             InitializeComponent();
+            gi = new GetInitiales();
+            gi.ShowDialog();
+            board1.Reset(gi.inputPlayer1.StarterBead);
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
@@ -24,16 +29,18 @@ namespace TicTacToe.Forms
 
         private void tsmiStart_Click(object sender, EventArgs e)
         {
-            board1.Reset();
+            gi.ShowDialog();
+            board1.Reset(gi.inputPlayer1.StarterBead);
         }
 
         private void board1_OnGetWinner(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Winner is "+ board1.Winner.Symbol+"\nDo you want to start again?"
+            if(MessageBox.Show("Winner is "+ board1.Winner.Name+"\nDo you want to start again?"
                 ,""
                 , MessageBoxButtons.YesNo)== DialogResult.Yes)
             {
-                board1.Reset();
+                gi.ShowDialog();
+                board1.Reset(gi.inputPlayer1.StarterBead);
             }
         }
 

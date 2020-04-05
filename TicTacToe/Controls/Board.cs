@@ -27,13 +27,13 @@ namespace TicTacToe.Controls
             Reset();
         }
 
-        public void Reset()
+        public void Reset(Model.Bead bead=null)
         {
-            Game = new Model.TicTacToe();
+            Game = new Model.TicTacToe(bead);
             Set();
         }
 
-        public void Set()
+        private void Set()
         {
             if(Game!=null)
             {
