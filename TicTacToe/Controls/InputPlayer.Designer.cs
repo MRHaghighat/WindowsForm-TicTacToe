@@ -34,6 +34,9 @@
             this.txtPlayerX = new System.Windows.Forms.TextBox();
             this.txtPlayerO = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
+            this.pnlColorX = new System.Windows.Forms.Panel();
+            this.pnlColorO = new System.Windows.Forms.Panel();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPlayerX.Location = new System.Drawing.Point(43, 26);
             this.txtPlayerX.Name = "txtPlayerX";
-            this.txtPlayerX.Size = new System.Drawing.Size(181, 20);
+            this.txtPlayerX.Size = new System.Drawing.Size(198, 20);
             this.txtPlayerX.TabIndex = 3;
             this.txtPlayerX.TextChanged += new System.EventHandler(this.txtPlayer_TextChanged);
             // 
@@ -83,7 +86,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPlayerO.Location = new System.Drawing.Point(43, 49);
             this.txtPlayerO.Name = "txtPlayerO";
-            this.txtPlayerO.Size = new System.Drawing.Size(181, 20);
+            this.txtPlayerO.Size = new System.Drawing.Size(198, 20);
             this.txtPlayerO.TabIndex = 3;
             this.txtPlayerO.TextChanged += new System.EventHandler(this.txtPlayer_TextChanged);
             // 
@@ -92,18 +95,46 @@
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(43, 72);
+            this.btnOk.Location = new System.Drawing.Point(43, 73);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(181, 23);
+            this.btnOk.Size = new System.Drawing.Size(198, 23);
             this.btnOk.TabIndex = 4;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // pnlColorX
+            // 
+            this.pnlColorX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlColorX.BackColor = System.Drawing.Color.Blue;
+            this.pnlColorX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlColorX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlColorX.Location = new System.Drawing.Point(245, 26);
+            this.pnlColorX.Name = "pnlColorX";
+            this.pnlColorX.Size = new System.Drawing.Size(19, 19);
+            this.pnlColorX.TabIndex = 5;
+            this.pnlColorX.BackColorChanged += new System.EventHandler(this.pnlColor_BackColorChanged);
+            this.pnlColorX.Click += new System.EventHandler(this.pnlColor_Click);
+            // 
+            // pnlColorO
+            // 
+            this.pnlColorO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlColorO.BackColor = System.Drawing.Color.Red;
+            this.pnlColorO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlColorO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlColorO.Location = new System.Drawing.Point(245, 50);
+            this.pnlColorO.Name = "pnlColorO";
+            this.pnlColorO.Size = new System.Drawing.Size(19, 19);
+            this.pnlColorO.TabIndex = 5;
+            this.pnlColorO.BackColorChanged += new System.EventHandler(this.pnlColor_BackColorChanged);
+            this.pnlColorO.Click += new System.EventHandler(this.pnlColor_Click);
+            // 
             // InputPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pnlColorO);
+            this.Controls.Add(this.pnlColorX);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtPlayerO);
             this.Controls.Add(this.txtPlayerX);
@@ -111,7 +142,7 @@
             this.Controls.Add(this.rbX);
             this.Controls.Add(this.label1);
             this.Name = "InputPlayer";
-            this.Size = new System.Drawing.Size(231, 101);
+            this.Size = new System.Drawing.Size(270, 103);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +156,8 @@
         private System.Windows.Forms.TextBox txtPlayerX;
         private System.Windows.Forms.TextBox txtPlayerO;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Panel pnlColorX;
+        private System.Windows.Forms.Panel pnlColorO;
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }

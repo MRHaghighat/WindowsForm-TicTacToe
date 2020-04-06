@@ -14,28 +14,16 @@ namespace TicTacToe.Controls
     {
         public event EventHandler OnOk;
 
-        Model.Bead x;
-        public Model.Bead X
+        public Model.Bead SelectedBead
         {
-            get => Model.TicTacToe.X;
-            set => Model.TicTacToe.X.Name = txtPlayerX.Text;
-        }
-        Model.Bead o;
-        public Model.Bead O
-        {
-            get => Model.TicTacToe.X;
-            set => Model.TicTacToe.O.Name = txtPlayerO.Text;
-        }
-        public Model.Bead StarterBead
-        {
-            get => rbX.Checked ? X : O;
+            get => rbX.Checked ? Model.TicTacToe.X : Model.TicTacToe.O;
         }
 
         public InputPlayer()
         {
             InitializeComponent();
-            txtPlayerO.Tag = Model.TicTacToe.O;
-            txtPlayerX.Tag = Model.TicTacToe.X;
+            txtPlayerO.Tag = pnlColorO.Tag = Model.TicTacToe.O;
+            txtPlayerX.Tag = pnlColorX.Tag = Model.TicTacToe.X;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -46,14 +34,20 @@ namespace TicTacToe.Controls
         private void txtPlayer_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if(tb.Tag == Model.TicTacToe.X)
+            ((Model.Bead)(tb.Tag)).Name = tb.Text;
+        }
+
+        private void pnlColor_Click(object sender, EventArgs e)
+        {
+            if(colorDialog.ShowDialog()== DialogResult.OK)
             {
-                Model.TicTacToe.X.Name = tb.Text;
+                ((Panel)(sender)).BackColor = colorDialog.Color;
             }
-            else
-            {
-                Model.TicTacToe.O.Name = tb.Text;
-            }
+        }
+
+        private void pnlColor_BackColorChanged(object sender, EventArgs e)
+        {
+            ((Model.Bead)(((Panel)(sender)).Tag)).Color = ((Panel)(sender)).BackColor;
         }
     }
 }

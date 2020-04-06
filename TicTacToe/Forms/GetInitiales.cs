@@ -12,6 +12,11 @@ namespace TicTacToe.Forms
 {
     public partial class GetInitiales : Form
     {
+        public Model.Bead StartBead
+        {
+            get => inputPlayer1.SelectedBead;
+        }
+
         public GetInitiales()
         {
             InitializeComponent();

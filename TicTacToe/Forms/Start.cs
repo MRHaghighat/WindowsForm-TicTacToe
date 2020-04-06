@@ -19,7 +19,7 @@ namespace TicTacToe.Forms
             InitializeComponent();
             gi = new GetInitiales();
             gi.ShowDialog();
-            board1.Reset(gi.inputPlayer1.StarterBead);
+            board1.Reset(gi.StartBead);
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace TicTacToe.Forms
         private void tsmiStart_Click(object sender, EventArgs e)
         {
             gi.ShowDialog();
-            board1.Reset(gi.inputPlayer1.StarterBead);
+            board1.Reset(gi.StartBead);
         }
 
         private void board1_OnGetWinner(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace TicTacToe.Forms
                 , MessageBoxButtons.YesNo)== DialogResult.Yes)
             {
                 gi.ShowDialog();
-                board1.Reset(gi.inputPlayer1.StarterBead);
+                board1.Reset(gi.StartBead);
             }
         }
 
