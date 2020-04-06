@@ -16,14 +16,14 @@ namespace TicTacToe.Controls
 
         public Model.Bead SelectedBead
         {
-            get => rbX.Checked ? Model.TicTacToe.X : Model.TicTacToe.O;
+            get => rbX.Checked ? Model.Bead.X : Model.Bead.O;
         }
 
         public InputPlayer()
         {
             InitializeComponent();
-            txtPlayerO.Tag = pnlColorO.Tag = Model.TicTacToe.O;
-            txtPlayerX.Tag = pnlColorX.Tag = Model.TicTacToe.X;
+            txtPlayerO.Tag = pnlColorO.Tag = Model.Bead.O;
+            txtPlayerX.Tag = pnlColorX.Tag = Model.Bead.X;
         }
 
         private void btnOk_Click(object sender, EventArgs e)

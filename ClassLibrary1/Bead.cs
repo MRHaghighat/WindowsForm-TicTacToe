@@ -9,6 +9,9 @@ namespace Model
 {
     public class Bead
     {
+        public static readonly Bead X = new Bead("X", 'X', Color.Blue);
+        public static readonly Bead O = new Bead("O", 'O', Color.Red);
+
         public string Name { get; set; }
         public char Symbol { get; set; }
         public Color Color { get; set; }

@@ -9,13 +9,11 @@ namespace Model
 {
     public class TicTacToe
     {
-        public static Bead X = new Bead("X", 'X', Color.Blue);
-        public static Bead O = new Bead("O", 'O', Color.Red);
         bool mustStop;
         Bead currentBead;
-        Bead[] board;
+        Board board;
 
-        public Bead[] Board { get => board; }
+        public Board Board { get => board; }
         public bool IsContinuous { get => HaveWinner(); }
         public Bead Winner
         {
@@ -27,20 +25,20 @@ namespace Model
             }
         }
         public Bead TurnTaken { get => currentBead; }
-        public Bead RecentPlayed { get => GetPlayedBead(); }
+        public Bead RecentPlayed { get => DidPlay(); }
 
-        public TicTacToe(Bead bead=null)
+        public TicTacToe(int size, Bead bead=null)
         {
-            currentBead = bead == null ? X : bead.Name == "X" ? X : O;
-            Reset();
+            currentBead = bead == null ? Bead.X : bead.Name == "X" ? Bead.X : Bead.O;
+            Reset(size);
         }
 
-        public void Reset()
+        public void Reset(int size)
         {
-            board = new Bead[9];
-            for (int i = 0; i < 9; i++)
+            board = new Board(size);
+            for (int i = 0; i < size * size; i++)
             {
-                board[i] = new Bead((i + 1).ToString());
+                board.SetOnBoard(i, new Bead((i + 1).ToString()));
             }
             mustStop = false;
         }
@@ -52,32 +50,24 @@ namespace Model
                 switch (b[i])
                 {
                     case 'X':
-                        board[i] = X;
+                        board.SetOnBoard(i, Bead.X);
                         break;
                     case 'O':
-                        board[i] = O;
+                        board.SetOnBoard(i, Bead.O);
                         break;
                     default:
-                        board[i] = new Bead(b[i].ToString());
+                        board.SetOnBoard(i, new Bead(b[i].ToString()));
                         break;
                 }
             }
 
-            currentBead = cb == 'X' ? X : O;
+            currentBead = cb == 'X' ? Bead.X : Bead.O;
             mustStop = false;
         }
 
         private bool HaveWinner()
         {
-            mustStop = board[0] == board[1] && board[1] == board[2]
-                || board[3] == board[4] && board[4] == board[5]
-                || board[6] == board[7] && board[7] == board[8]
-                || board[0] == board[3] && board[3] == board[6]
-                || board[1] == board[4] && board[4] == board[7]
-                || board[2] == board[5] && board[5] == board[8]
-                || board[0] == board[4] && board[4] == board[8]
-                || board[2] == board[4] && board[4] == board[6];
-
+            mustStop = board.HaveMatche;
             return mustStop;
         }
 
@@ -85,36 +75,36 @@ namespace Model
         {
             if (!mustStop && CellIndex > -1 && CellIndex < 9)
             {
-                board[CellIndex] = currentBead;
-                GetTurn();
-                return GetPlayedBead();
+                board.SetOnBoard(CellIndex, currentBead);
+                WillPlay();
+                return DidPlay();
             }
-            return board[CellIndex];
+            return board.GetFromBoard(CellIndex);
         }
 
         private Bead GetWinner()
         {
             if (HaveWinner())
-                return GetPlayedBead();
+                return DidPlay();
             else
                 return null;
         }
 
-        private Bead GetTurn()
+        private Bead WillPlay()
         {
-            if (currentBead == X)
-                currentBead = O;
+            if (currentBead == Bead.X)
+                currentBead = Bead.O;
             else
-                currentBead = X;
+                currentBead = Bead.X;
             return currentBead;
         }
 
-        private Bead GetPlayedBead()
+        private Bead DidPlay()
         {
-            if (currentBead == X)
-                return O;
+            if (currentBead == Bead.X)
+                return Bead.O;
             else
-                return X;
+                return Bead.X;
         }
     }
 }

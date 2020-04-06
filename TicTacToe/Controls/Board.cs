@@ -29,7 +29,7 @@ namespace TicTacToe.Controls
 
         public void Reset(Model.Bead bead=null)
         {
-            Game = new Model.TicTacToe(bead);
+            Game = new Model.TicTacToe(3, bead);
             Set();
         }
 
@@ -37,15 +37,15 @@ namespace TicTacToe.Controls
         {
             if(Game!=null)
             {
-                cell1.Bead = Game.Board[0];
-                cell2.Bead = Game.Board[1];
-                cell3.Bead = Game.Board[2];
-                cell4.Bead = Game.Board[3];
-                cell5.Bead = Game.Board[4];
-                cell6.Bead = Game.Board[5];
-                cell7.Bead = Game.Board[6];
-                cell8.Bead = Game.Board[7];
-                cell9.Bead = Game.Board[8];
+                cell1.Bead = Game.Board.GetFromBoard(0);
+                cell2.Bead = Game.Board.GetFromBoard(1);
+                cell3.Bead = Game.Board.GetFromBoard(2);
+                cell4.Bead = Game.Board.GetFromBoard(3);
+                cell5.Bead = Game.Board.GetFromBoard(4);
+                cell6.Bead = Game.Board.GetFromBoard(5);
+                cell7.Bead = Game.Board.GetFromBoard(6);
+                cell8.Bead = Game.Board.GetFromBoard(7);
+                cell9.Bead = Game.Board.GetFromBoard(8);
             }
         }
 
@@ -68,7 +68,7 @@ namespace TicTacToe.Controls
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (Model.Bead b in Game.Board)
+            foreach (Model.Bead b in Game.Board.GetOnBoardBeads)
                 stringBuilder.Append(b.Symbol);
 
             stringBuilder.Append(Game.TurnTaken.Symbol);
@@ -82,7 +82,7 @@ namespace TicTacToe.Controls
 
             if(g.Length>9 && g.Length<11)
             {
-                Game = new Model.TicTacToe();
+                Game = new Model.TicTacToe(3);
                 Game.Set(g.Substring(0, 9), g[9]);
                 Set();
                 if(Game.IsContinuous)
