@@ -37,11 +37,10 @@ namespace Model
                     bead = cells[i].Bead;
                     matched = GetRow(i + 1).All(b => b?.Bead == bead) || GetColumn(i + 1).All(b => b?.Bead == bead);
                 }
-
                 return matched ? matched : Diameter(1).All(b => b.Bead == cells[0].Bead) || Diameter(2).All(b => b.Bead == cells[size - 1].Bead);
             }
         }
-        public Bead[] GetOnBoardBeads
+        public Bead[] OnBoardBeads
         {
             get
             {
@@ -108,7 +107,7 @@ namespace Model
                         }
                         break;
                 }
-                return cells.ToArray();
+                return c.ToArray();
             }
             return null;
         }

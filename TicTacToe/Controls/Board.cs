@@ -52,9 +52,9 @@ namespace TicTacToe.Controls
         private void cell_OnSelectCell(object sender, EventArgs e)
         {
             Cell cell = (Cell)sender;
-            cell.Bead = Game.Play(cell.CellIndex);
-            if (!Game.IsContinuous)
-            {               
+           var r= Game.Winner;
+            if (Game.Play(cell.CellIndex) == null)
+            {
                 OnPlayed?.Invoke(this, new EventArgs());
             }
             else
@@ -62,16 +62,17 @@ namespace TicTacToe.Controls
                 OnPlayed?.Invoke(this, new EventArgs());
                 OnGetWinner?.Invoke(this, new EventArgs());
             }
+            cell.Bead = Game.RecentPlayer;
         }
 
         public void Save(string path)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (Model.Bead b in Game.Board.GetOnBoardBeads)
+            foreach (Model.Bead b in Game.Board.OnBoardBeads)
                 stringBuilder.Append(b.Symbol);
 
-            stringBuilder.Append(Game.TurnTaken.Symbol);
+            stringBuilder.Append(Game.CurrentPlayer.Symbol);
 
             File.WriteAllText(path, stringBuilder.ToString());
         }
@@ -83,7 +84,7 @@ namespace TicTacToe.Controls
             if(g.Length>9 && g.Length<11)
             {
                 Game = new Model.TicTacToe(3);
-                Game.Set(g.Substring(0, 9), g[9]);
+                Game.LoadFromString(g.Substring(0, 9), g[9]);
                 Set();
                 if(Game.IsContinuous)
                     OnGetWinner?.Invoke(this, new EventArgs());
